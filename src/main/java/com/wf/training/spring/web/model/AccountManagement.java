@@ -1,9 +1,16 @@
 package com.wf.training.spring.web.model;
 
+import javax.validation.constraints.NotNull;
+
 public class AccountManagement {
 
+@NotNull(message="CustomerID is required!")
 private int CustomerID; 
+
+@NotNull(message="AccountID is required!")
 private int AccountNo;
+
+@NotNull(message="Account is required!")
 private String Account;
 //Savings,FD,RD
 
