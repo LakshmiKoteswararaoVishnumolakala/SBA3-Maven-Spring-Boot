@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="spring" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,37 +42,55 @@
         border-color: purple;
         margin: .5%;
     }
+     .error
+    {
+    	color:red;    
+    }
 </style>
 <body>
 <jsp:include page="header.jsp"/>
 <h2 align="center"> Forgot Password Page</h2>
 <hr/>
-<form action="ForgotPassword" method="post">
+<spring:form action="${pageContext.request.contextPath}/ForgotPassword" method="post" modelAttribute="user">
+
 <div id="wrapper">
-		<label> Enter Customer ID:</label>
-		<input type="text" name ="Customer ID"/>
-		<br><br/>	
-		<label> Enter Date of Birth</label>
-		<input type="text" name ="Date Of Birth"/>
-		<br><br/>	
-		<label>Enter Mobile #</label>
-		<input type="text" name ="Mobile No"/>
-		<br><br/>	
-		<label>Enter One Time Password</label>
-		<input type="text" name ="OTP"/>
-		<br><br/>
-		<label> Enter New Password</label>	
-		<input type ="text" name="NewPassword"/>
-		<br><br/>
-		<label> Re Enter New Password</label>	
-		<input type ="text" name="ReEnterNewPassword"/>
-		<br><br/>
-		<input type ="submit" value ="Submit"/>
-		<br><br/>		
+		<div><spring:label path="CustomerID" > Enter Customer ID:</spring:label></div>
+		<div><spring:input path="CustomerID" type="text" />
+		<spring:errors path="CustomerID" cssClass="error"/>	
+		</div>
+		<br/>	
+		<div><spring:label path="DateOfBirth"> Enter Date of Birth</spring:label></div>
+		<div><spring:input path="DateOfBirth" type="text" />
+		<spring:errors path="DateOfBirth" cssClass="error"/>	
+		</div>
+		<br/>	
+		<div><spring:label path="MobileNo">Enter Mobile #</spring:label></div>
+		<div><spring:input  path="MobileNo" type="text"/>
+		<spring:errors path="MobileNo"  cssClass="error"/>	
+		</div>
+		<br/>		
+		<div><spring:label path="OTP">Enter One Time Password</spring:label></div>
+		<div><spring:input path="OTP" type="text" />
+		<spring:errors path="OTP" cssClass="error"/>	
+		</div>
+		<br/>
+		<div><spring:label path="NewPassword"> Enter New Password</spring:label></div>	
+		<div><spring:input path="NewPassword" type ="text"/>
+		<spring:errors path="NewPassword" cssClass="error"/>	
+		</div>
+		<br/>
+		<div><spring:label path="ReEnterNewPassword" > Re Enter New Password</spring:label></div>
+		<div><spring:input  path="ReEnterNewPassword" type ="text" />
+		<spring:errors path="ReEnterNewPassword" cssClass="error"/>	
+		</div>		
+		<br/>
+		<input  type ="submit" value ="Submit"/>
+		<br/>		
 </div>
-</form>
+</spring:form>
+
 <hr/>
-		<a href=index>Go to Login Page</a>
+		<a href="${pageContext.request.contextPath}/index">Go to Login Page</a>
 <hr/>
 <jsp:include page="footer.jsp"/>
 </body>

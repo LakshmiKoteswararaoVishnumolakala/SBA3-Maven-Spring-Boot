@@ -52,7 +52,7 @@
 <h2 align="center">Login</h2>
 <hr/>
 	
-	<spring:form action ="HomePage" method="post" modelAttribute="user"> 
+	<spring:form action ="${pageContext.request.contextPath}/HomePage" method="post" modelAttribute="user"> 
 		<div id="wrapper">
 			<div><spring:label path="CustomerID">Enter Customer ID:</spring:label></div>
 			<div><spring:input path="CustomerID" type ="text"/>
@@ -63,22 +63,21 @@
 			<div><spring:input path="password" type ="text"/>
 				<spring:errors path="password" cssClass="error"/>
 			</div>	
-		<br/>	
-		
+		<br/>			
 		<div><spring:label path="BankRelationship">Select Relationship with Bank:</spring:label></div>
 		<div><spring:select path="BankRelationship">
 			<spring:options items="${user.getBankRelationships()}"/>
 			</spring:select>	
 		</div>
 		<br/>			
-		<input type ="submit" value ="Login"/>	
+			<input type ="submit" value ="Login"/>	
 		<br/>	
 		</div>
 	</spring:form>
 <hr/>
-<a href=ForgotPassword>Forgot Password</a>
+<a href="${pageContext.request.contextPath}/ForgotPassword">Forgot Password</a>
 <hr/>
-<a href = "UserRegistration">New User Registration</a>
+<a href = "${pageContext.request.contextPath}/UserRegistration">New User Registration</a>
 <hr/>
 <jsp:include page="footer.jsp"/>
 </body>
