@@ -44,10 +44,21 @@ public class HomeController
 				//user.setPassword("Password");
 				//user.setBankRelationship("Customer");			
 				model.addAttribute("user", user);
-				return "index";	
+			//	return "index";	
+				return "HomePage";
 	}	
+		
+	@RequestMapping("/custom-login")
+	public String customLogin()
+	{
+		return "login-form";		
+	}
 	
-
+	@RequestMapping("/access-denied")
+	public String accessDenied()
+	{
+		return "error-page";		
+	}
 		
 	@PostMapping("/HomePage")
 	//public String HomePage(HttpServletRequest request)
@@ -145,11 +156,18 @@ public class HomeController
 		 */
 	}
 	
-	@RequestMapping("/UserRegistration")
+	/*@RequestMapping("/UserRegistration")
 	public String UserRegistration()
 	{
 		
 		return "UserRegistration";//~forward
+	}	
+	*/
+	
+	@RequestMapping("/UserRegistration")
+	public String UserRegistration(@Valid @ModelAttribute User user, BindingResult result)
+	{
+		return "UserRegistration";
 	}	
 
 	@PostMapping("/saveUserDetails")
@@ -167,9 +185,11 @@ public class HomeController
 		//return mvUser;	
 	}	
 	@RequestMapping("/ForgotPassword")
-	public String ForgotPassword()
+	public String ForgotPassword(Model model)
 	{
-		
+		User user = new User();
+		model.addAttribute("user", user);
+	
 		return "ForgotPassword";//~forward
 	}	
 	

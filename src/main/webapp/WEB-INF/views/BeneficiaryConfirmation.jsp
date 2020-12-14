@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://www.springframework.org/tags/form" prefix="spring" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,29 +43,29 @@
         margin: .5%;
     }
 </style>
-
 <body>
 <jsp:include page="header.jsp"/>
 <h2 align="center">Beneficiary Registration Successful</h2>
 <hr/>
- <div id="wrapper">
-	 <hr/>
-			<a href=ListOfBeneficiaries>View List of Beneficiaries</a>
-	<hr/>
-			<a href=HomePage>Go To Home Page</a>
-	<hr/>
-	<h3> Following beneficiary details are added successfully.</h3>
-	
-	<h4> Beneficiary Account No : 	${beneficiary.benAccountNo} </h4>
-	<h4> Beneficiary Account Name : ${beneficiary.getBenAccountName()}</h4>
-	<h4> IFSC code  :				${beneficiary.getBenIFSCcode()}</h4>
-	<h4> Bank Name  :				${beneficiary.getBenBankName()}</h4>
-	<h4> Branch Name :				${beneficiary.getBenBranchName()}</h4>
-	<h4> Branch City :				${beneficiary.getBenBranchCity()}</h4>
-	<h4> Email ID :					${beneficiary.getBenEmail()}</h4>
-	<h4> Beneficiary Contact :		${beneficiary.getBenContact()}</h4>
-
-</div>
+<spring:form>
+	<div id="wrapper">
+		 <hr/>
+				<a href="${pageContext.request.contextPath}/ListOfBeneficiaries">View List of Beneficiaries</a>
+		<hr/>
+				<a href="${pageContext.request.contextPath}/HomePage">Go To Home Page</a>
+		<hr/>
+		<h3> Following beneficiary details are added successfully.</h3>
+		
+		<h4> Beneficiary Account No : 	${beneficiary.benAccountNo} </h4>
+		<h4> Beneficiary Account Name : ${beneficiary.getBenAccountName()}</h4>
+		<h4> IFSC code  :				${beneficiary.getBenIFSCcode()}</h4>
+		<h4> Bank Name  :				${beneficiary.getBenBankName()}</h4>
+		<h4> Branch Name :				${beneficiary.getBenBranchName()}</h4>
+		<h4> Branch City :				${beneficiary.getBenBranchCity()}</h4>
+		<h4> Email ID :					${beneficiary.getBenEmail()}</h4>
+		<h4> Beneficiary Contact :		${beneficiary.getBenContact()}</h4>	
+	</div>
+</spring:form>
 <hr/>
 <jsp:include page="footer.jsp"/>
 </body>

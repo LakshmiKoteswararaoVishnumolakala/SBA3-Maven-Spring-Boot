@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+ <%@ taglib uri="http://www.springframework.org/tags/form" prefix="spring" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,67 +42,98 @@
         border-color: purple;
         margin: .5%;
     }
+    .error
+    {
+    	color:red;    
+    }
 </style>
 <body>
 <jsp:include page="header.jsp"/>
 <h2 align="center">Update Contact Details</h2>
 <hr/>
-<form action="saveContactDetails" method="post">
+<spring:form action="${pageContext.request.contextPath}/saveContactDetails" method="post">
  <div id="wrapper">
  		
-		<label>Enter Mobile #</label>
-		<input type="text" name ="MobileNo"/>
-		<br><br/>
-		<label>Alternate Mobile #</label>
-		<input type="text" name ="AlternateMobileNo"/>
-		<br><br/>	
-		<label>Address</label>
-		<input type="text" name ="Address"/>
-		<br><br/>
-		<label>Apartment/Building Name</label>
-		<input type="text" name ="AptName"/>
-		<br><br/>
-			<label>Flat No</label>
-			<input type="text" name ="FlatNo"/>
-		<br><br/>
-			<label>Plot No</label>
-			<input type="text" name ="PlotNo"/>
-		<br><br/>
-			<label>Street No</label>
-			<input type="text" name ="StreetNo"/>
-		<br><br/>
-			<label>Colony</label>
-			<input type="text" name ="Colony"/>
-		<br><br/>
-			<label>Near By Land Mark</label>
-			<input type="text" name ="LandMark"/>
-		<br><br/>
-			<label for="City">Select City</label>
-			<select name="City" id="City">
-			  <option value="Hyderabad.">Hyderabad</option>		
-			  <option value="Bangalore.">Bangalore</option>		
-			</select>
-		<br><br/>
-			<label for="State">Select State</label>
-			<select name="State" id="State">
-			  <option value="Telangana">Telangana</option>		
-			  <option value="Karnataka">Karnataka</option>		
-			</select>
-		<br><br/>
-			<label for="Country">Select Country</label>
-			<select name="Country" id="Country">
-			  <option value="India">India</option>		
-			  <option value="USA">USA</option>		
-			</select>
-		<br><br/>
-			<label>Pin Code</label>
-			<input type="text" name ="PinCode"/>		
-		<br><br/>
+		<br/>
+			<div><spring:label path="MobileNo">Enter Mobile No:</spring:label></div>
+			<div><spring:input path="MobileNo" type ="text"/>
+				<spring:errors path="MobileNo" cssClass="error"/>
+			</div>	
+		<br/>	
+			<div><spring:label path="AlternateMobileNo">Enter Alternate Mobile No:</spring:label></div>
+			<div><spring:input path="AlternateMobileNo" type ="text"/>
+				<spring:errors path="AlternateMobileNo" cssClass="error"/>
+			</div>	
+		<br/>
+			<div><spring:label path="EmailID">Enter Email ID:</spring:label></div>
+			<div><spring:input path="EmailID" type ="text"/>
+				<spring:errors path="EmailID" cssClass="error"/>
+			</div>	
+		<br/>
+			<div><spring:label path="Address">Enter Address:</spring:label></div>
+			<div><spring:input path="Address" type ="text"/>
+				<spring:errors path="Address" cssClass="error"/>
+			</div>	
+		<br/>
+			<div><spring:label path="AptName">Enter Apartment/Building Name</spring:label></div>
+			<div><spring:input path="AptName" type ="text"/>
+				<spring:errors path="AptName" cssClass="error"/>
+			</div>	
+		<br/>			
+			<div><spring:label path="FlatNo">Enter Flat No</spring:label></div>
+			<div><spring:input path="FlatNo" type ="text"/>
+				<spring:errors path="FlatNo" cssClass="error"/>
+			</div>	
+		<br/>
+			<div><spring:label path="PlotNo">Enter Plot No</spring:label></div>
+			<div><spring:input path="PlotNo" type ="text"/>
+				<spring:errors path="PlotNo" cssClass="error"/>
+			</div>	
+		<br/>
+			<div><spring:label path="StreetNo">Enter Street No</spring:label></div>
+			<div><spring:input path="StreetNo" type ="text"/>
+				<spring:errors path="StreetNo" cssClass="error"/>
+			</div>	
+		<br/>
+			<div><spring:label path="Colony">Enter Colony</spring:label></div>
+			<div><spring:input path="Colony" type ="text"/>
+				<spring:errors path="Colony" cssClass="error"/>
+			</div>	
+		<br/>
+			<div><spring:label path="LandMark">Enter LandMark</spring:label></div>
+			<div><spring:input path="LandMark" type ="text"/>
+				<spring:errors path="LandMark" cssClass="error"/>
+			</div>	
+		<br/>
+			<div><spring:label path="City">Select City:</spring:label></div>
+			<div><spring:select path="City">
+				<spring:options items="${user.getCities()}"/>
+				</spring:select>	
+			</div>
+		<br/>
+			<div><spring:label path="State">Select State:</spring:label></div>
+			<div><spring:select path="State">
+				<spring:options items="${user.getStates()}"/>
+				</spring:select>	
+			</div>
+		<br/>
+			<div><spring:label path="Country">Select Country:</spring:label></div>
+			<div><spring:select path="Country">
+				<spring:options items="${user.getCountries()}"/>
+				</spring:select>	
+			</div>
+		<br/>
+			<div><spring:label path="PinCode">Enter PinCode:</spring:label></div>
+			<div><spring:input path="PinCode" type ="text"/>
+				<spring:errors path="PinCode" cssClass="error"/>
+			</div>	
+		<br/>
 			<input type ="submit" value ="Update"/>
+		<br/>
 </div>
-</form>
+</spring:form>
 <hr/>
-		<a href=HomePage>Home</a>
+		<a href="${pageContext.request.contextPath}/HomePage">Home</a>
 <hr/>
 <jsp:include page="footer.jsp"/>
 </body>

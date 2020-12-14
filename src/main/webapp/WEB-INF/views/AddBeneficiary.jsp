@@ -52,7 +52,7 @@
 <jsp:include page="header.jsp"/>
 <h2 class= "error" align="center">Manage Beneficiaries</h2> 
 <hr/>
-<spring:form action ="saveBenDetails" method="post" modelAttribute="beneficiary"> 
+<spring:form action ="${pageContext.request.contextPath}/saveBenDetails" method="post" modelAttribute="beneficiary"> 
  <div id="wrapper">
  		<div>
 	 		<div><spring:label path="benAccountNo">Beneficiary Account Number:</spring:label></div>
@@ -131,7 +131,7 @@
 </div>		
 </spring:form>
 <hr/>
-	<a href="HomePage">Home</a>
+	<a href="${pageContext.request.contextPath}/HomePage">Home</a>
 <hr/>
 <jsp:include page="footer.jsp"/>
 </body>

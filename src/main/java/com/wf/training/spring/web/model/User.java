@@ -9,6 +9,7 @@ public class User
 	private String BankRelationship;	
 	private LinkedHashMap<String,String> BankRelationships;
 	private String Gender;
+	private LinkedHashMap<String,String> Genders;
 	private String FirstName;
 	private String LastName;
 	private String MiddleName;
@@ -24,14 +25,53 @@ public class User
 	private String Colony;
 	private String LandMark;
 	private String City;
+	private LinkedHashMap<String,String> Cities;
 	private String State;
+	private LinkedHashMap<String,String> States;
 	private String Country;
+	private LinkedHashMap<String,String> Countries;
 	private String PinCode;
 	private String PAN;
 	private String AADHAR;
 	private String CustomerID;
 	private String Password;
+	private String OTP;
+	private String	NewPassword;
+	public String getNewPassword() {
+		return NewPassword;
+	}
+
+	public void setNewPassword(String newPassword) {
+		NewPassword = newPassword;
+	}
+
+	public String getReEnterNewPassword() {
+		return ReEnterNewPassword;
+	}
+
+	public void setReEnterNewPassword(String reEnterNewPassword) {
+		ReEnterNewPassword = reEnterNewPassword;
+	}
+
+	private String ReEnterNewPassword;
 	
+
+	public String getOTP() 
+	{
+		return OTP;
+	}
+
+	public void setOTP(String oTP) {		
+		if (oTP.contentEquals(""))
+		{
+			OTP = generateOTP(5);
+		}
+		else
+		{
+			OTP = oTP;
+		}
+	}
+
 	public User()
 	{
 		this.BankRelationships = new LinkedHashMap<String,String>();
@@ -39,6 +79,41 @@ public class User
 		this.BankRelationships.put("Accounts Executive", "Accounts Executive");
 		this.BankRelationships.put("Bank Representative", "Bank Representative");
 		
+		this.Genders = new LinkedHashMap<String,String>();
+		this.Genders.put("M", "Male");
+		this.Genders.put("F", "Female");
+		
+		this.Cities = new LinkedHashMap<String,String>();
+		this.Cities.put("HYD", "Hyderabad");
+		this.Cities.put("VJA", "Vijayawada");
+		this.Cities.put("BAN", "Bangalore");
+		
+		
+		this.States = new LinkedHashMap<String,String>();
+		this.States.put("AP", "Andhra Pradesh");
+		this.States.put("TS", "Telangana");
+		this.States.put("KA", "Karnataka");	
+		
+		this.Countries = new LinkedHashMap<String,String>();
+		this.Countries.put("IND", "INDIA");
+		this.Countries.put("OTH", "OTHER");		
+		
+	}
+	
+	public LinkedHashMap<String, String> getGenders() {
+		return Genders;
+	}
+
+	public LinkedHashMap<String, String> getCities() {
+		return Cities;
+	}
+
+	public LinkedHashMap<String, String> getStates() {
+		return States;
+	}
+
+	public LinkedHashMap<String, String> getCountries() {
+		return Countries;
 	}
 	
 	public String getCustomerID() {
@@ -223,6 +298,27 @@ public class User
 	
 		    return sb.toString();
 		}
+		
+		// Function to generate random alpha-numeric password of specific length
+				public static String generateOTP(int len)
+				{
+				    // ASCII range - alphanumeric (0-9, a-z, A-Z)
+				    final String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+			
+				    SecureRandom random = new SecureRandom();
+				    StringBuilder sb = new StringBuilder();
+			
+				    // each iteration of loop choose a character randomly from the given ASCII range
+				    // and append it to StringBuilder instance
+			
+				    for (int i = 0; i < len; i++) {
+				        int randomIndex = random.nextInt(chars.length());
+				        sb.append(chars.charAt(randomIndex));
+				    }
+			
+				    return sb.toString();
+				}
+		
 		public static void main(String[] args) 
 		{
 		    int len = 16;

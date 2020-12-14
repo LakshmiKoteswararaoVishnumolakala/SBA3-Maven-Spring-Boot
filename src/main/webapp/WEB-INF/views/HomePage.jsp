@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="spring" %>
+<%@taglib uri="http://www.springframework.org/security/tags" prefix="security" %>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,12 +43,25 @@
         border-color: purple;
         margin: .5%;
     }
+     .error
+    {
+    	color:red;    
+    }
 </style>
 <body>
-<jsp:include page="header.jsp"/>
-<h2 align="center"> Welcome To Integrated Banking System</h2>
+<hr/>
+	<jsp:include page="header.jsp"/>
+		<%-- To access info about logged in user --%>
+	<%-- info about logged in user is maintained in object principal --%>
+	<h2 align="center">Welcome <security:authentication property="principal.username"/></h2>
+	<h2 align="center"><security:authentication property="principal.authorities"/></h2>
+	<h2 align="center"> Welcome To Integrated Banking System</h2>
 <hr/>	
+<spring:form action="${pageContext.request.contextPath}/logout" method="POST">
+	<input type="submit" value="Logout">
+
  <div id="wrapper">
+ <security:authorize access="hasRole('CUSTOMER')">
 	  <a href="${pageContext.request.contextPath}/customer/AccountManagement">Account Summary</a>
 	  <br></br>
 	  <a href="${pageContext.request.contextPath}/customer/FundsTransfer">Funds Transfer</a>  
@@ -61,9 +76,12 @@
 	  <br></br>
 	   <a href="${pageContext.request.contextPath}/customer/UpdateContactDetails">Update Contact Details</a>
 	  <br></br>
-  	  <a href="index">Sign Out</a>
+ </security:authorize>
+ 
+  	  <a href="${pageContext.request.contextPath}/index">Sign Out</a>
   	  <br></br>  	
  </div>
+ </spring:form>
  <hr/>
 <jsp:include page="footer.jsp"/>
  </body>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+ <%@ taglib uri="http://www.springframework.org/tags/form" prefix="spring" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,17 +43,18 @@
         margin: .5%;
     }
 </style>
-
 <body>
 <jsp:include page="header.jsp"/>
 <h2 align="center"> Password Reset Confirmation</h2>
- <div id="wrapper">
-<hr/>
-<h4>Your Password has been changed successfully. </h4>
-<h4> Your  new Password is : ${user.getPassword()} </h4>
-<hr/>
-		<a href=index>Go to Login Page</a>
-</div>
+<spring:form >
+	<div id="wrapper">
+		<hr/>
+		<h4>Your Password has been changed successfully. </h4>
+		<h4> Your  new Password is : ${user.getPassword()} </h4>
+		<hr/>
+		<a href="${pageContext.request.contextPath}/index">Go to Login Page</a>
+	</div>
+</spring:form>
 <jsp:include page="footer.jsp"/>
 
 </body>

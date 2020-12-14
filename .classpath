@@ -34,13 +34,23 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/raoko/.m2/repository/jakarta/validation/jakarta.validation-api/2.0.2/jakarta.validation-api-2.0.2.jar" sourcepath="C:/Users/raoko/.m2/repository/jakarta/validation/jakarta.validation-api/2.0.2/jakarta.validation-api-2.0.2-sources.jar">
+	<classpathentry exported="true" kind="lib" path="C:/Users/raoko/.m2/repository/jakarta/validation/jakarta.validation-api/2.0.2/jakarta.validation-api-2.0.2.jar" sourcepath="C:/Users/raoko/.m2/repository/jakarta/validation/jakarta.validation-api/2.0.2/jakarta.validation-api-2.0.2-sources.jar">
 		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
 			<attribute name="javadoc_location" value="jar:file:/C:/Users/raoko/.m2/repository/jakarta/validation/jakarta.validation-api/2.0.2/jakarta.validation-api-2.0.2-javadoc.jar!/"/>
+			<attribute name="maven.pomderived" value="true"/>
 			<attribute name="maven.groupId" value="jakarta.validation"/>
 			<attribute name="maven.artifactId" value="jakarta.validation-api"/>
 			<attribute name="maven.version" value="2.0.2"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/raoko/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.3/jaxb-runtime-2.3.3.jar" sourcepath="C:/Users/raoko/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.3/jaxb-runtime-2.3.3-sources.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/raoko/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.3/jaxb-runtime-2.3.3-javadoc.jar!/"/>
+			<attribute name="maven.groupId" value="org.glassfish.jaxb"/>
+			<attribute name="maven.artifactId" value="jaxb-runtime"/>
+			<attribute name="maven.version" value="2.3.3"/>
 			<attribute name="maven.scope" value="compile"/>
 		</attributes>
 	</classpathentry>

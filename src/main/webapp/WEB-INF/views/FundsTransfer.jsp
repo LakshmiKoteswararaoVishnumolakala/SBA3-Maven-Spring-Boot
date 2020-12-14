@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="spring" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,19 +47,21 @@
 <jsp:include page="header.jsp"/>
 <h2 align="center">Funds Transfer Page</h2>
 <hr/>
- <div id="wrapper">
-	  <a href="HomePage">Home</a>
-      <br></br>
-	  <a href="TransferWithinIBS">Transfer with in the bank</a>
-	  <br></br>
-	  <a href="TransferOutsideBank">Transfer outside of the bank</a>
-	  <br></br>
-	  <a href="AddBeneficiary">Add Beneficiary</a>
-	  <br></br>
-	  <a href="ListOfBeneficiaries">View List of Beneficiaries</a>  
-	  <br></br>
-  	  <a href="index">Sign Out</a>
-  </div>
+<spring:form>
+	 <div id="wrapper">
+		  <a href="${pageContext.request.contextPath}/HomePage">Home</a>
+	      <br></br>
+		  <a href="${pageContext.request.contextPath}/TransferWithinIBS">Transfer with in the bank</a>
+		  <br></br>
+		  <a href="${pageContext.request.contextPath}/TransferOutsideBank">Transfer outside of the bank</a>
+		  <br></br>
+		  <a href="${pageContext.request.contextPath}/AddBeneficiary">Add Beneficiary</a>
+		  <br></br>
+		  <a href="${pageContext.request.contextPath}/ListOfBeneficiaries">View List of Beneficiaries</a>  
+		  <br></br>
+	  	  <a href="${pageContext.request.contextPath}/index">Sign Out</a>
+	  </div>
+ </spring:form>
  <hr/>
 <jsp:include page="footer.jsp"/>
 </body>
